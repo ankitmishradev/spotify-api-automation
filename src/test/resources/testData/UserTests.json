@@ -1,0 +1,13 @@
+{
+  "data": {
+    "validData": {
+      "request": {
+        "endpoint": "/me"
+      },
+      "response": {
+        "display_name": "Ankit Mishra",
+        "id": "fiqa8yz4c3yzfl9y750cnhiz9"
+      }
+    }
+  }
+}

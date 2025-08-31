@@ -1,0 +1,101 @@
+{
+  "data": {
+    "validData": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": "${BASE64_AUTHORIZATION_STRING}"
+        },
+        "body": {
+          "refresh_token": "${REFRESH_TOKEN}",
+          "grant_type": "refresh_token"
+        }
+      },
+      "response": {
+        "access_token": "VALIDATION:NOT_NULL",
+        "token_type": "Bearer",
+        "expires_in": "3600",
+        "scope": "${SCOPE}"
+      }
+    },
+    "emptyGrantType": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": "${BASE64_AUTHORIZATION_STRING}"
+        },
+        "body": {
+          "refresh_token": "${REFRESH_TOKEN}",
+          "grant_type": ""
+        }
+      },
+      "response": {
+        "error": "unsupported_grant_type",
+        "error_description": "grant_type parameter is missing"
+      }
+    },
+    "emptyRefreshToken": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": "${BASE64_AUTHORIZATION_STRING}"
+        },
+        "body": {
+          "refresh_token": "",
+          "grant_type": "refresh_token"
+        }
+      },
+      "response": {
+        "error": "invalid_request",
+        "error_description": "refresh_token must be supplied"
+      }
+    },
+    "invalidGrantType": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": "${BASE64_AUTHORIZATION_STRING}"
+        },
+        "body": {
+          "refresh_token": "${REFRESH_TOKEN}",
+          "grant_type": "refresh_toke"
+        }
+      },
+      "response": {
+        "error": "unsupported_grant_type",
+        "error_description": "grant_type refresh_toke is not supported"
+      }
+    },
+    "invalidHeader": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": ""
+        },
+        "body": {
+          "refresh_token": "${REFRESH_TOKEN}",
+          "grant_type": "refresh_token"
+        }
+      },
+      "response": {
+        "error": "invalid_client"
+      }
+    },
+    "invalidRefreshToken": {
+      "request": {
+        "endpoint": "/api/token",
+        "headers": {
+          "Authorization": "${BASE64_AUTHORIZATION_STRING}"
+        },
+        "body": {
+          "refresh_token": "fsdf",
+          "grant_type": "refresh_token"
+        }
+      },
+      "response": {
+        "error": "invalid_grant",
+        "error_description": "Invalid refresh token"
+      }
+    }
+  }
+}

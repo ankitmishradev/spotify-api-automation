@@ -1,0 +1,66 @@
+{
+  "data": {
+    "createPlaylistValidData": {
+      "request": {
+        "endpoint": "/users/${USER_ID}/playlists",
+        "body": {
+          "name": "Demo Playlist",
+          "description": "Playlist description",
+          "public": true
+        }
+      },
+      "response": {
+        "collaborative": false,
+        "description": "Playlist description",
+        "followers": {
+          "href": null,
+          "total": 0
+        },
+        "id": "",
+        "name": "Demo Playlist",
+        "type": "playlist",
+        "public": true
+      }
+    },
+    "createPlaylistMissingRequiredField": {
+      "request": {
+        "endpoint": "/users/${USER_ID}/playlists",
+        "body": {}
+      },
+      "response": {
+        "error": {
+          "status": 400,
+          "message": "Missing required field: name"
+        }
+      }
+    },
+    "getPlaylistInfoValidData": {
+      "request": {
+        "endpoint": "/playlists"
+      },
+      "response": {
+        "collaborative": false,
+        "description": "Playlist description",
+        "followers": {
+          "href": null,
+          "total": 0
+        },
+        "id": "",
+        "name": "Demo Playlist",
+        "type": "playlist",
+        "public": true
+      }
+    },
+    "getPlaylistInfoInvalidData": {
+      "request": {
+        "endpoint": "/playlists"
+      },
+      "response": {
+        "error": {
+          "status": 502,
+          "message": "Error while loading resource"
+        }
+      }
+    }
+  }
+}
